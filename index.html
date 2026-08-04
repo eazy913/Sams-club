@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam's Club – Receiveperks.online</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff; color: #1a1a2e; }
+
+    /* NAV */
+    nav {
+      background: #0057A8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 8px; }
+    .nav-brand span:first-child { color: #fff; font-weight: 800; font-size: 15px; letter-spacing: 1px; }
+    .nav-brand span:last-child { color: #7EC8E3; font-size: 14px; font-weight: 600; }
+    .nav-menu { color: #fff; font-size: 22px; cursor: pointer; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 36px 24px 28px; }
+    .hero-label { color: #0057A8; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-size: 32px; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; }
+    .hero p { font-size: 15px; color: #555; line-height: 1.5; }
+
+    /* CARD */
+    .card-wrap { padding: 0 20px 20px; }
+    .reward-card {
+      background: linear-gradient(135deg, #1a5fa8 0%, #3a9fd8 60%, #5ab8e8 100%);
+      border-radius: 16px;
+      padding: 24px 20px 20px;
+      color: #fff;
+      position: relative;
+      min-height: 160px;
+      overflow: hidden;
+    }
+    .reward-card .card-title { font-weight: 700; font-size: 17px; margin-bottom: 4px; }
+    .reward-card .card-sub { font-size: 13px; opacity: 0.85; }
+    .reward-card .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.15);
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .reward-card .balance { text-align: right; margin-top: 40px; }
+    .reward-card .balance-label { font-size: 12px; opacity: 0.85; }
+    .reward-card .balance-amount { font-size: 28px; font-weight: 800; }
+
+    /* CTA BUTTON */
+    .cta-wrap { padding: 0 20px 10px; }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: #003F8A;
+      color: #fff;
+      text-align: center;
+      padding: 18px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .cta-btn:hover { background: #002f6e; }
+    .members-note {
+      text-align: center;
+      font-size: 13px;
+      color: #27ae60;
+      padding: 10px 0 20px;
+      font-weight: 500;
+    }
+    .members-note span { margin-right: 6px; }
+
+    /* HOW IT WORKS */
+    .striped {
+      background: repeating-linear-gradient(
+        -45deg,
+        #e8f0fb,
+        #e8f0fb 10px,
+        #f0f5ff 10px,
+        #f0f5ff 20px
+      );
+      padding: 30px 20px 10px;
+    }
+    .section-label { color: #0057A8; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
+    .section-title { font-size: 24px; font-weight: 800; color: #1a1a2e; text-align: center; margin-bottom: 20px; }
+
+    .step-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+    .icon-blue { background: #003F8A; }
+    .icon-teal { background: #1a7abf; }
+    .icon-green { background: #27ae60; }
+    .step-text h3 { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 3px; }
+    .step-text p { font-size: 13px; color: #666; }
+
+    /* FAQ */
+    .faq-section { padding: 30px 20px 10px; background: #fff; }
+    .faq-item {
+      border: 1px solid #dde3ef;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-item span { font-size: 14px; color: #1a1a2e; font-weight: 500; }
+    .faq-chevron { color: #555; font-size: 16px; }
+    .faq-answer {
+      display: none;
+      font-size: 13px;
+      color: #555;
+      padding: 10px 18px 14px;
+      border: 1px solid #dde3ef;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .faq-item.open { border-radius: 10px 10px 0 0; border-bottom: none; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: #e8f0fb;
+      padding: 36px 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .cta-section h2 { font-size: 24px; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; }
+    .cta-section p { font-size: 14px; color: #555; margin-bottom: 24px; line-height: 1.5; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a2e;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .footer-brand span:first-child { color: #fff; font-weight: 800; font-size: 15px; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+    .footer-brand span:last-child { color: #7EC8E3; font-size: 13px; font-weight: 600; }
+    .footer-links { margin: 16px 0 10px; }
+    .footer-links a { color: #ccc; text-decoration: none; font-size: 13px; margin: 0 10px; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { color: #888; font-size: 12px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <span>SAM'S CLUB</span>
+      <span>Receiveperks.online</span>
+    </div>
+    <div class="nav-menu">&#9776;</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Store Rewards</div>
+    <h1>Sam's Club</h1>
+    <p>Complete simple tasks &amp;<br>unlock exclusive store rewards</p>
+  </div>
+
+  <!-- REWARD CARD -->
+  <div class="card-wrap">
+    <div class="reward-card">
+      <div class="card-title">Sam's Club</div>
+      <div class="card-sub">Member Rewards</div>
+      <div class="watermark">SAM'S CLUB</div>
+      <div class="balance">
+        <div class="balance-label">Points Balance</div>
+        <div class="balance-amount">$500</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://giftclick.org/aff_c?offer_id=4258&aff_id=186911" class="cta-btn">Claim Now &rarr;</a>
+  </div>
+  <div class="members-note"><span>&#10024;</span>1k+ members earning store rewards</div>
+
+  <!-- HOW IT WORKS -->
+  <div class="striped">
+    <div class="section-label">Simple Process</div>
+    <div class="section-title">How It Works</div>
+
+    <div class="step-card">
+      <div class="step-icon icon-blue">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3" stroke="#fff" stroke-width="2"/><path d="M7 9h10M7 13h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="step-text">
+        <h3>Register Your Email</h3>
+        <p>Join Sam's Club rewards for exclusive perks</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-icon icon-teal">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L21 9.5l-4.5 4.3 1 6.2L12 17l-5.5 3 1-6.2L3 9.5l6.5-.5L12 3z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step-text">
+        <h3>Complete 4-5 Offers</h3>
+        <p>The more you complete, the more you earn</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-icon icon-green">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="2" stroke="#fff" stroke-width="2"/><path d="M8 8V6a4 4 0 018 0v2" stroke="#fff" stroke-width="2"/><path d="M12 13v3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="step-text">
+        <h3>Claim Your Reward</h3>
+        <p>Redeem for groceries, bulk items &amp; more</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="section-label">Questions</div>
+    <div class="section-title">Frequently Asked Questions</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <span>How long do tasks typically take?</span>
+      <span class="faq-chevron">&#8964;</span>
+    </div>
+    <div class="faq-answer">Most tasks take between 5 and 15 minutes to complete. Simple sign-up offers can take as little as 2 minutes.</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <span>What kind of tasks will I be doing?</span>
+      <span class="faq-chevron">&#8964;</span>
+    </div>
+    <div class="faq-answer">Tasks include signing up for free trials, completing surveys, downloading apps, and registering for services. All tasks are simple and beginner-friendly.</div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <span>When will I receive my rewards?</span>
+      <span class="faq-chevron">&#8964;</span>
+    </div>
+    <div class="faq-answer">Rewards are typically processed within 3–5 business days after completing your required offers. You'll receive a notification once your reward is ready.</div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="cta-section">
+    <h2>Ready to Start Earning?</h2>
+    <p>Join thousands of members already<br>earning store rewards with Receiveperks.online</p>
+    <a href="https://giftclick.org/aff_c?offer_id=4258&aff_id=186911" class="cta-btn">Claim Now &rarr;</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span>SAM'S CLUB</span>
+      <span>Receiveperks.online</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Receiveperks.online. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.nextElementSibling.style.display = 'none';
+      });
+      if (!isOpen) {
+        el.classList.add('open');
+        answer.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
